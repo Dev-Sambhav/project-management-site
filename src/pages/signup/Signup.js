@@ -1,4 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
+import { useSignup } from "../../hooks/useSignup";
+import { useAuthContext } from "../../hooks/useAuthContext";
 
 // styles
 import "./Signup.css";
@@ -9,12 +12,21 @@ const Signup = () => {
   const [displayName, setDisplayName] = useState("");
   const [thumbnail, setThumbnail] = useState(null);
   const [thumbnailError, setThumbnailError] = useState(null);
+  const { signup, isLoading } = useSignup();
+  const { user } = useAuthContext();
+  const history = useHistory();
 
   // handling on submit
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log({ email, password, displayName });
+    signup(email, password, displayName, thumbnail);
   };
+
+  useEffect(() => {
+    if (user) {
+      history.push("/");
+    }
+  }, [user, history]);
 
   // checking thumbnail file on every change whether it is image or not
   const handleFileChange = (e) => {
@@ -36,14 +48,14 @@ const Signup = () => {
     }
 
     // if there is no error
-    setThumbnail(selectedFile)
+    setThumbnail(selectedFile);
     console.log("Thumbnail updated");
   };
   return (
     <form className="auth-form" onSubmit={handleSubmit}>
       <h2>Sign Up</h2>
       <label>
-        <span>DisplayName: </span>
+        <span>Display Name: </span>
         <input
           type="text"
           required
@@ -72,9 +84,14 @@ const Signup = () => {
       <label>
         <span>Profile Thumbnail: </span>
         <input type="file" required onChange={handleFileChange} />
-        {thumbnailError && <div className="error">{thumbnailError}</div> }
+        {thumbnailError && <div className="error">{thumbnailError}</div>}
       </label>
-      <button className="btn">Sign Up</button>
+      {!isLoading && <button className="btn">Sign Up</button>}
+      {isLoading && (
+        <button className="btn" disabled>
+          Loading...
+        </button>
+      )}
     </form>
   );
 };

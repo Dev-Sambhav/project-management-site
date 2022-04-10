@@ -1,4 +1,4 @@
-import { projectAuth } from "../firebase/config";
+import { projectAuth, projectStorage } from "../firebase/config";
 import { useState, useEffect } from "react";
 import { useAuthContext } from "./useAuthContext";
 
@@ -8,7 +8,7 @@ export const useSignup = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { dispatch } = useAuthContext();
 
-  const signup = async (email, password, displayName) => {
+  const signup = async (email, password, displayName, thumbnail) => {
     setError(null);
     setIsLoading(true);
     try {
@@ -22,8 +22,13 @@ export const useSignup = () => {
         throw new Error("Couldn't Sign the user");
       }
 
-      // add displayName to user
-      await res.user.updateProfile({ displayName });
+      // upload thumbnail to firebase storage
+      const uploadPath = `thumbnails/${res.user.uid}/${thumbnail.name}`;
+      const img = await projectStorage.ref(uploadPath).put(thumbnail);
+      const imgURL = await img.ref.getDownloadURL(); // getting image url from img reference
+
+      // add displayName and photoURL to user
+      await res.user.updateProfile({ displayName, photoURL: imgURL });
 
       // dispatch the user data globally
       dispatch({ type: "SIGNUP", payload: res.user });
