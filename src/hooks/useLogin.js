@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import { projectAuth } from "../firebase/config";
+import { projectAuth, projectFirestore } from "../firebase/config";
 import { useAuthContext } from "./useAuthContext";
 
-const useLogin = () => {
+export const useLogin = () => {
   const [isCancelled, setIsCancelled] = useState(false);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -19,6 +19,12 @@ const useLogin = () => {
       if (!res) {
         throw new Error("User does not Exists");
       }
+
+      // update the user online status
+      await projectFirestore.collection("users").doc(res.user.uid).update({
+        online: true,
+      });
+
       dispatch({ type: "LOGIN", payload: res.user });
       // update state
       if (!isCancelled) {
@@ -39,5 +45,3 @@ const useLogin = () => {
 
   return { error, isLoading, login };
 };
-
-export default useLogin;
