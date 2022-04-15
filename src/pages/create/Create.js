@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import Select from "react-select";
 import { useCollection } from "../../hooks/useCollection";
+import { timestamp } from "../../firebase/config";
+import { useAuthContext } from "../../hooks/useAuthContext";
 
 // styles
 import "./Create.css";
@@ -21,6 +23,7 @@ const Create = () => {
   const [category, setCategory] = useState("");
   const [assignedUsers, setAssignedUsers] = useState([]);
   const [formErrors, setFormErrors] = useState(null);
+  const { user } = useAuthContext();
 
   // fetching all the users and make a new users object with label and value props
   useEffect(() => {
@@ -32,7 +35,7 @@ const Create = () => {
     }
   }, [documents]);
 
-  // submit form
+  // submit form to firebase
   const handleSubmit = (e) => {
     e.preventDefault();
     setFormErrors(null);
@@ -45,7 +48,34 @@ const Create = () => {
       setFormErrors("Please assign the project to at least one user");
       return;
     }
-    console.log(name, details, dueDate, category.value, assignedUsers);
+
+    // project admin details
+    const createdBy = {
+      displayName: user.displayName,
+      id: user.uid,
+      photoURL: user.photoURL,
+    };
+
+    // assign to user
+    const assignedUsersList = assignedUsers.map((assignUser) => {
+      return {
+        displayName: assignUser.value.displayName,
+        id: assignUser.value.id,
+        photoURL: assignUser.value.photoURL,
+      };
+    });
+
+    // if there is no error create a project collection which contain all the info of project
+    const project = {
+      name,
+      details,
+      category: category.value,
+      dueDate: timestamp.fromDate(new Date(dueDate)),
+      comments: [],
+      createdBy,
+      assignedUsersList,
+    };
+    console.log(project);
   };
   return (
     <div className="create-form">
