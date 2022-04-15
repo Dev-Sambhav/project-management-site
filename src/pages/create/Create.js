@@ -3,6 +3,8 @@ import Select from "react-select";
 import { useCollection } from "../../hooks/useCollection";
 import { timestamp } from "../../firebase/config";
 import { useAuthContext } from "../../hooks/useAuthContext";
+import { useFirestore } from "../../hooks/useFirestore";
+import { useHistory } from "react-router-dom";
 
 // styles
 import "./Create.css";
@@ -24,6 +26,8 @@ const Create = () => {
   const [assignedUsers, setAssignedUsers] = useState([]);
   const [formErrors, setFormErrors] = useState(null);
   const { user } = useAuthContext();
+  const { addDocument, response } = useFirestore("projects");
+  const history = useHistory();
 
   // fetching all the users and make a new users object with label and value props
   useEffect(() => {
@@ -36,7 +40,7 @@ const Create = () => {
   }, [documents]);
 
   // submit form to firebase
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setFormErrors(null);
     // handling errors
@@ -75,7 +79,11 @@ const Create = () => {
       createdBy,
       assignedUsersList,
     };
-    console.log(project);
+    // adding project object into firestore
+    await addDocument(project);
+    if (!response.error) {
+      history.push("/");
+    }
   };
   return (
     <div className="create-form">
@@ -123,7 +131,12 @@ const Create = () => {
             isMulti
           />
         </label>
-        <button className="btn">Add Project</button>
+        {response.isLoading && (
+          <button className="btn" disabled>
+            Adding...
+          </button>
+        )}
+        {!response.isLoading && <button className="btn">Add Project</button>}
         {formErrors && <p className="error">{formErrors}</p>}
       </form>
     </div>
