@@ -11,6 +11,7 @@ import Dashboard from "./pages/dashboard/Dashboard";
 import Project from "./pages/project/Project";
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
+import OnlineUsers from "./components/OnlineUsers";
 
 function App() {
   const { user, isAuthReady } = useAuthContext();
@@ -44,6 +45,7 @@ function App() {
               </Route>
             </Switch>
           </div>
+          {user && <OnlineUsers />}
         </BrowserRouter>
       )}
     </div>
