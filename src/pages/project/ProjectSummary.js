@@ -1,6 +1,17 @@
 import Avatar from "../../components/Avatar";
+import { useFirestore } from "../../hooks/useFirestore";
+import { useHistory } from "react-router-dom";
+import { useAuthContext } from "../../hooks/useAuthContext";
 
 const ProjectSummary = ({ project }) => {
+  const { deleteDocument } = useFirestore("projects");
+  const { user } = useAuthContext();
+  const history = useHistory();
+
+  const handleClick = () => {
+    deleteDocument(project.id);
+    history.push("/");
+  };
   return (
     <div>
       <div className="project-summary">
@@ -14,10 +25,16 @@ const ProjectSummary = ({ project }) => {
           {project.assignedUsersList.map((user) => (
             <div key={user.id}>
               <Avatar src={user.photoURL} />
+              <p>{user.displayName}</p>
             </div>
           ))}
         </div>
       </div>
+      {user.uid === project.createdBy.id && (
+        <button className="btn" onClick={handleClick}>
+          Mark as Complete
+        </button>
+      )}
     </div>
   );
 };
