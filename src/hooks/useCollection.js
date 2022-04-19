@@ -26,7 +26,7 @@ export const useCollection = (collectionName, _query, _order) => {
       (snapshot) => {
         if (snapshot.empty) {
           setIsLoading(false);
-          setError("No users to load");
+          setError("No Project to load");
         } else {
           const results = [];
           snapshot.docs.forEach((doc) => {
