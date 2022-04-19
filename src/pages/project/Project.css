@@ -39,9 +39,6 @@
 .project-summary .assigned-users .avatar {
   margin-right: 10px;
 }
-.project-summary .assigned-users p {
-  text-align: center;
-}
 .project-summary + .btn {
   margin-top: 20px;
 }
