@@ -1,9 +1,19 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    match /{document=**} {
-      allow read, write: if
-          request.time < timestamp.date(2022, 5, 6);
+    // Rules for users collection
+    match /users/{user_id}{
+      // Any auth user can read and write.
+      allow read, create: if request.auth != null;
+      // Only user who created a project can update it.
+      allow update: if request.auth.uid == user_id
+    }
+    // Rules for project collection
+    match /projects/{project_id}{
+      // Any auth user can read, write and update the project.
+      allow read, create, update: if request.auth != null;
+      // Only user who created a project can delete it.
+      allow delete: if request.auth.uid == resource.data.createdBy.id
     }
   }
 }
