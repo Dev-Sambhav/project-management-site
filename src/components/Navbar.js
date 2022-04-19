@@ -4,7 +4,7 @@ import { useAuthContext } from "../hooks/useAuthContext";
 
 // styles and images
 import "./Navbar.css";
-import Temple from "../assets/temple.svg";
+import Logo from "../assets/project-logo.svg";
 
 const Navbar = () => {
   const { isLoading, logout } = useLogout();
@@ -13,8 +13,8 @@ const Navbar = () => {
     <nav className="navbar">
       <ul>
         <li className="logo">
-          <img src={Temple} alt="project-logo" />
-          <span>The Sam</span>
+          <img src={Logo} alt="project-logo" />
+          <span>Pro Manager</span>
         </li>
         {!user && (
           <>

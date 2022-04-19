@@ -17,7 +17,7 @@ const Dashboard = () => {
     setCurrentFilter(newFilter);
   };
 
-  // filter category and list the project according to selected category
+  // filter category and list all  projects according to selected category
   const projects =
     documents &&
     documents.filter((document) => {

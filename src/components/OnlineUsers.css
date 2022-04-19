@@ -7,7 +7,7 @@
   color: var(--heading-color);
 }
 .user-list h2 {
-  text-align: center;
+  text-align: right;
   margin-bottom: 40px;
   padding-bottom: 10px;
   border-bottom: 1px solid #eee;
