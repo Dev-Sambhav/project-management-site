@@ -26,7 +26,7 @@ const Dashboard = () => {
           return true;
         case "Mine":
           let assignedToMe = false;
-          document.assignedUsersList.map((u) => {
+          document.assignedUsersList.forEach((u) => {
             if (user.uid === u.id) {
               assignedToMe = true;
             }
@@ -37,6 +37,8 @@ const Dashboard = () => {
         case "Marketing":
         case "Sales":
           return document.category === currentFilter;
+        default:
+          return true;
       }
     });
 

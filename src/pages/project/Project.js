@@ -9,7 +9,7 @@ import ProjectSummary from "./ProjectSummary";
 
 const Project = () => {
   const { id } = useParams();
-  const { document: project, error, isLoading } = useDocument("projects", id);
+  const { document: project, error} = useDocument("projects", id);
   if (error) {
     return <div className="error">{error}</div>;
   }
