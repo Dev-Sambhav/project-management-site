@@ -13,6 +13,11 @@
   justify-content: space-between;
 }
 
+.message-box .no-chat{
+  color: var(--text-color);
+  text-align: center;
+  font-size: 20px;
+}
 .message-box .message {
   display: flex;
   align-items: center;

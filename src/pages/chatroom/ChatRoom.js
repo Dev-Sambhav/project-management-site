@@ -25,19 +25,21 @@ const ChatRoom = () => {
   return (
     <div className="chat-room">
       <div className="message-box">
-        {messages.map(({ id, text, photoURL, uid }) => (
-          <div>
-            <div
-              key={id}
-              className={`message ${
-                uid === user.uid ? "sent" : "received"
-              }`}
-            >
-              <img src={photoURL} alt="" />
-              <p>{text}</p>
+        {messages.length === 0 ? (
+          <p className="no-chat">Chat not Started Yet!!!</p>
+        ) : (
+          messages.map(({ id, text, photoURL, uid }) => (
+            <div>
+              <div
+                key={id}
+                className={`message ${uid === user.uid ? "sent" : "received"}`}
+              >
+                <img src={photoURL} alt="" />
+                <p>{text}</p>
+              </div>
             </div>
-          </div>
-        ))}
+          ))
+        )}
       </div>
       <SendMessage scroll={scroll} />
       <div ref={scroll}></div>
