@@ -9,6 +9,7 @@ import Signup from "./pages/signup/Signup";
 import Create from "./pages/create/Create";
 import Dashboard from "./pages/dashboard/Dashboard";
 import Project from "./pages/project/Project";
+import ChatRoom from "./pages/chatroom/ChatRoom";
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
 import OnlineUsers from "./components/OnlineUsers";
@@ -41,6 +42,10 @@ function App() {
               </Route>
               <Route path="/projects/:id">
                 {user && <Project />}
+                {!user && <Redirect to="/login" />}
+              </Route>
+              <Route path="/chatroom">
+                {user && <ChatRoom />}
                 {!user && <Redirect to="/login" />}
               </Route>
             </Switch>

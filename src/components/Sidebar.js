@@ -5,6 +5,7 @@ import "./Sidebar.css";
 import DashboardIcon from "../assets/dashboard_icon.svg";
 import AddIcon from "../assets/add_icon.svg";
 import Avatar from "./Avatar";
+import ChatIcon from "../assets/chat-icon.svg";
 
 const Sidebar = () => {
   const { user } = useAuthContext();
@@ -27,6 +28,12 @@ const Sidebar = () => {
               <NavLink to="/create">
                 <img src={AddIcon} alt="add-icon" />
                 <span>New Project</span>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/chatroom">
+                <img src={ChatIcon} alt="chat-icon" />
+                <span>Chat</span>
               </NavLink>
             </li>
           </ul>
