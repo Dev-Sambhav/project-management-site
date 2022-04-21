@@ -5,6 +5,23 @@
   margin-top: -75px;
   padding: 15px;
   overflow-y: scroll;
+  background-color: #dfdbe5;
+  border-radius: 15px;
+  background-color: #dfdbe5;
+  background-image: url("../../assets/chat-background_3.gif");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.chat-room::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.chat-room {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 .chat-room .message-box {
@@ -13,7 +30,7 @@
   justify-content: space-between;
 }
 
-.message-box .no-chat{
+.message-box .no-chat {
   color: var(--text-color);
   text-align: center;
   font-size: 20px;
@@ -24,16 +41,18 @@
   padding: 10px;
   margin-bottom: 15px;
   position: relative;
+  max-width: 300px;
 }
 
 .message img {
-  width: 35px;
-  height: 35px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
 }
 
 .message p {
   margin: 10px;
+  font-size: 15px;
 }
 
 .message.sent {
@@ -41,7 +60,6 @@
   color: #ffffff;
   float: right;
   border-radius: 25px 10px;
-  box-shadow: 0 0 6px #b2b2b2;
 }
 
 .message.received {
@@ -51,17 +69,18 @@
   float: left;
 }
 
+.SendMessageBox {
+  min-width: 690px;
+  margin-left: 8px;
+}
+
 .sendMsg {
-  position: fixed;
   display: flex;
-  width: 58%;
-  bottom: 0;
-  z-index: 1;
+  width: 100%;
   border-top: 1px solid lightgray;
-  margin-left: -20px;
   padding: 10px;
-  padding-bottom: 30px;
+  padding-bottom: 20px;
   background-color: #fafafa;
-  margin-bottom: 15px;
   border-radius: 10px;
+  margin-top: 5px;
 }

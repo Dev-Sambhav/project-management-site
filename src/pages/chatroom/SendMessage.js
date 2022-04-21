@@ -20,7 +20,7 @@ const SendMessage = ({ scroll }) => {
     scroll.current.scrollIntoView({ behavior: "smooth" });
   };
   return (
-    <div>
+    <div className="SendMessageBox">
       <form onSubmit={sendMessage}>
         <div className="sendMsg">
           <Input
