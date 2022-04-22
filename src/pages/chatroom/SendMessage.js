@@ -2,6 +2,8 @@ import { useState } from "react";
 import { projectFirestore, timestamp } from "../../firebase/config";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { Input, Button } from "@mui/material";
+import SendIcon from '@mui/icons-material/Send';
+
 
 const SendMessage = ({ scroll }) => {
   const [msg, setMsg] = useState("");
@@ -30,6 +32,7 @@ const SendMessage = ({ scroll }) => {
               fontWeight: "550",
               marginLeft: "5px",
               marginBottom: "-3px",
+              color: "#fff",
             }}
             placeholder="Message..."
             type="text"
@@ -44,8 +47,10 @@ const SendMessage = ({ scroll }) => {
               margin: "4px 5% -13px 5%",
               maxWidth: "200px",
               marginLeft: "20px",
+              color: "#B4FF9F",
             }}
             type="submit"
+            endIcon={<SendIcon />}
           >
             Send
           </Button>

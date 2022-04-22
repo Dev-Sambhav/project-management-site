@@ -9,7 +9,7 @@
 .project-filter nav {
   display: flex;
   padding: 10px;
-  background-color: #fff;
+  background-color: var(--project-color);
   border-radius: 4px;
 }
 .project-filter p {

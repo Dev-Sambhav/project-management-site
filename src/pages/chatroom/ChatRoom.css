@@ -1,9 +1,9 @@
 .chat-room {
-  width: 100%;
+  width: 98%;
   height: 65vh;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   margin-top: -75px;
-  padding: 15px;
+  padding: 10px;
   overflow-y: scroll;
   background-color: #dfdbe5;
   border-radius: 15px;
@@ -71,7 +71,7 @@
 
 .SendMessageBox {
   min-width: 690px;
-  margin-left: 8px;
+  margin-right: 10px;
 }
 
 .sendMsg {
@@ -79,8 +79,8 @@
   width: 100%;
   border-top: 1px solid lightgray;
   padding: 10px;
-  padding-bottom: 20px;
-  background-color: #fafafa;
+  padding-bottom: 30px;
+  background: #3A3845;
   border-radius: 10px;
   margin-top: 5px;
 }

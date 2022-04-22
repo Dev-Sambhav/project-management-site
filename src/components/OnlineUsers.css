@@ -1,9 +1,9 @@
 .user-list {
-  min-width: 235px;
+  width: 250px;
   padding: 30px;
   box-sizing: border-box;
-  background: #fbfbfb;
-  color: var(--heading-color);
+  background: var(--primary-color);
+  color: #fff;
 }
 .user-list h2 {
   text-align: right;
