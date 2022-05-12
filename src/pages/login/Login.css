@@ -1,0 +1,62 @@
+.auth-form.auth-login {
+  max-width: 360px;
+  margin: 10px auto;
+  margin-top: -60px;
+  margin-bottom: 30px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  padding-left: 40px;
+  padding-right: 40px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background-color: #e5e5f7;
+  opacity: 0.8;
+  background-image: radial-gradient(#444cf7 0.5px, #e5e5f7 0.5px);
+  background-size: 10px 10px;
+}
+
+.auth-form h2 {
+  text-align: center;
+}
+
+.sign-in-box {
+  margin: 0 auto;
+  max-width: 360px;
+  padding: 1.5em 2.4em;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.sign-in {
+  display: flex;
+  justify-content: space-around;
+}
+
+.sign-text {
+  text-align: center;
+  margin-top: -10px;
+  margin-bottom: 20px;
+  color: var(--heading-color);
+}
+
+.sign-in .google-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+}
+
+.sign-in .google-btn img,
+.sign-in .facebook-btn img {
+  width: 30px;
+  height: 30px;
+  margin-right: 0.6em;
+}
+
+.sign-in .facebook-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+}
