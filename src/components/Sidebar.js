@@ -36,6 +36,12 @@ const Sidebar = () => {
                 <span>Chat</span>
               </NavLink>
             </li>
+            <li>
+              <NavLink to="/feedback">
+                <img src={ChatIcon} alt="chat-icon" />
+                <span>Feedback</span>
+              </NavLink>
+            </li>
           </ul>
         </nav>
       </div>

@@ -1,8 +1,21 @@
 .create-form {
-    max-width: 600px;
-    margin-top: -3rem;
-  }
+  max-width: 900px;
+  margin-top: -3rem;
+  overflow-y: scroll;
+  max-height: 70vh;
+}
 
-.create-form .btn{
-    margin-bottom: 1.2rem;
+/* Hide scrollbar for Chrome, Safari and Opera */
+.create-form::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.create-form {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.create-form .btn {
+  margin-bottom: 1.2rem;
 }

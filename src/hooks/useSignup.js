@@ -5,6 +5,7 @@ import {
 } from "../firebase/config";
 import { useState, useEffect } from "react";
 import { useAuthContext } from "./useAuthContext";
+// import { SendSignupNotification } from "./SendSignupNotification";
 
 export const useSignup = () => {
   const [isCancelled, setIsCancelled] = useState(false);
@@ -43,6 +44,10 @@ export const useSignup = () => {
 
       // dispatch the user data globally
       dispatch({ type: "SIGNUP", payload: res.user });
+
+      // send welcome message
+      // console.log("Email:-",res.user.email);
+      
 
       // update state
       if (!isCancelled) {

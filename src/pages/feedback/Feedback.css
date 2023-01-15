@@ -1,0 +1,12 @@
+.feedback{
+    width: 100%;
+    margin-top: -50px;
+}
+
+.feedback label{
+    margin-bottom: -7px;
+}
+
+.feedback .btn{
+    margin-top: 10px;
+}

@@ -13,9 +13,10 @@ import ChatRoom from "./pages/chatroom/ChatRoom";
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
 import OnlineUsers from "./components/OnlineUsers";
-
+import Feedbackform from "./pages/feedback/Feedbackform";
 function App() {
   const { user, isAuthReady } = useAuthContext();
+   
   return (
     <div className="App">
       {isAuthReady && (
@@ -46,6 +47,10 @@ function App() {
               </Route>
               <Route path="/chatroom">
                 {user && <ChatRoom />}
+                {!user && <Redirect to="/login" />}
+              </Route>
+              <Route path="/feedback">
+                {user && <Feedbackform />}
                 {!user && <Redirect to="/login" />}
               </Route>
             </Switch>
