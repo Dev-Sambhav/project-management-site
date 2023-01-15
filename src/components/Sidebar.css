@@ -4,7 +4,8 @@
   min-height: 100vh;
   box-sizing: border-box;
   position: relative;
-  color: #fff;
+  color: #FAFAFA;
+  border-radius: 0px 7px 7px 0px;
 }
 .sidebar-content {
   position: fixed;
@@ -37,7 +38,7 @@
   filter: invert(100%);
 }
 .sidebar .links a.active {
-  color: #555;
+  color: #E8EAF6;
   background: var(--bg-color);
   border-radius: 20px 0 0 20px;
 }

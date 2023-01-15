@@ -2,12 +2,12 @@
 
 /* variables */
 :root {
-  --heading-color: #444;
-  --text-color: #999;
-  --primary-color: #143F6B;
+  --heading-color: #424242;
+  --text-color: #424242;
+  --primary-color: #212121;
   --highlight-color: #d13267;
-  --bg-color: #F5F5F5;
-  --project-color: #EFFFFD;
+  --bg-color: #795548;
+  --project-color: #EEEEEE;
 }
 
 /* base styles */
@@ -30,10 +30,13 @@ ul {
   font-size: 1.2em;
   color: var(--heading-color);
   display: inline-block;
+  position: fixed;
+  margin-top: -50px;
+  color: #E8EAF6;
 }
 .btn {
   background: #fff;
-  padding: 8px 12px;
+  padding: 10px 20px;
   border-radius: 4px;
   color: var(--primary-color);
   cursor: pointer;
@@ -53,6 +56,7 @@ label {
 label span {
   display: block;
   margin-bottom: 6px;
+  color: #E8EAF6;
 }
 input, textarea {
   padding: 8px 6px;

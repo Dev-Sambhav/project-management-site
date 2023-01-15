@@ -43,17 +43,19 @@ const Dashboard = () => {
     });
 
   return (
-    <div className="dashboard">
+    <>
       <h2 className="page-title">Dashboard</h2>
-      {error && <p className="error">No Projects Yet!</p>}
-      {documents && (
-        <ProjectFilter
-          currentFilter={currentFilter}
-          changeFilter={changeFilter}
-        />
-      )}
-      {projects && <ProjectList projects={projects} />}
-    </div>
+      <div className="dashboard">
+        {error && <p className="error">No Projects Yet!</p>}
+        {documents && (
+          <ProjectFilter
+            currentFilter={currentFilter}
+            changeFilter={changeFilter}
+          />
+        )}
+        {projects && <ProjectList projects={projects} />}
+      </div>
+    </>
   );
 };
 export default Dashboard;

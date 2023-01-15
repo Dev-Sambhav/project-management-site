@@ -4,7 +4,7 @@ import { useAuthContext } from "../hooks/useAuthContext";
 
 // styles and images
 import "./Navbar.css";
-import Logo from "../assets/project-logo.svg";
+import Logo from "../assets/project-icon.svg";
 
 const Navbar = () => {
   const { isLoading, logout } = useLogout();
@@ -14,7 +14,7 @@ const Navbar = () => {
       <ul>
         <li className="logo">
           <img src={Logo} alt="project-logo" />
-          <span>Pro Manager</span>
+          <span style={{color:"#E8EAF6"}}>Pro Manager</span>
         </li>
         {!user && (
           <>

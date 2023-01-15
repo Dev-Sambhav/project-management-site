@@ -6,6 +6,7 @@
   color: #fff;
   overflow-y: scroll;
   max-height: 100vh;
+  border-radius: 7px 0px 0px 7px;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */

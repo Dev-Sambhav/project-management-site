@@ -9,22 +9,22 @@ const Feedback = () => {
     message: "",
   });
 
-  const handleChange = (event)=> {
+  const handleChange = (event) => {
     event.preventDefault();
     const { name, value } = event.target;
     setFeedback((prevFeedback) => ({ ...prevFeedback, [name]: value }));
-  }
+  };
 
-  const handleSubmit = (event)=> {
+  const handleSubmit = (event) => {
     event.preventDefault();
     SendFeedback(feedback);
-  }
+  };
 
   return (
-    <form className="feedback"onSubmit={handleSubmit}>
-    <h2 className="page-title">Feedback</h2>
+    <form className="feedback" onSubmit={handleSubmit}>
+      <h2 className="page-title">Feedback</h2>
       <label>
-        Name:
+        <span>Name:</span>
         <input
           type="text"
           name="name"
@@ -33,7 +33,7 @@ const Feedback = () => {
         />
       </label>
       <label>
-        Email:
+        <span>Email:</span>
         <input
           type="email"
           name="email"
@@ -42,14 +42,16 @@ const Feedback = () => {
         />
       </label>
       <label>
-        Message:
+        <span>Message:</span>
         <textarea
           name="message"
           value={feedback.message}
           onChange={handleChange}
         />
       </label>
-      <button className="btn" type="submit">Submit</button>
+      <button className="btn" type="submit">
+        Submit
+      </button>
     </form>
   );
 };
