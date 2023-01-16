@@ -19,6 +19,16 @@ const Login = () => {
     login(email, password);
   };
 
+  // handle google login
+  const handleGoogleLogin = ()=>{
+    console.log("Google Login Successful")
+  }
+
+  // handle facebook login
+  const handleFacebookLogin = ()=>{
+    console.log("Facebook Login Successful")
+  }
+
   // redirect to user once login successful
   useEffect(() => {
     if (user) {
@@ -27,7 +37,7 @@ const Login = () => {
   }, [user, history]);
 
   return (
-    <form onSubmit={handleSubmit} className="auth-form">
+    <form className="auth-form login-form">
       <h2>Login</h2>
       <label>
         <span>Email:</span>
@@ -52,8 +62,19 @@ const Login = () => {
           Logging...
         </button>
       )}
-      {!isLoading && <button className="btn">Login</button>}
-      {error && <div className="error">{error}</div> }
+      {!isLoading && <button type="button" onClick={handleSubmit} className="btn">Login</button>}
+      {error && <div className="error">{error}</div>}
+      <div class="hl">
+        <span class="hl-innertext">or</span>
+      </div>
+      <div className="login-icon">
+        <button type="button" onClick={handleGoogleLogin} class="google btn">
+          <i class="fa fa-google fa-fw"></i> Google
+        </button>
+        <button type="button" onClick={handleFacebookLogin} class="fb btn">
+          <i class="fa fa-facebook fa-fw"></i> Facebook
+        </button>
+      </div>
     </form>
   );
 };
