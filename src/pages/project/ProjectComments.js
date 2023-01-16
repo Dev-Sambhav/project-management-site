@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { timestamp } from "../../firebase/config";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useFirestore } from "../../hooks/useFirestore";
@@ -8,6 +8,7 @@ import formatDistanceToNow from "date-fns/formatDistanceToNow";
 const ProjectComments = ({ project }) => {
   const [newComment, setNewComment] = useState("");
   const { user } = useAuthContext();
+  const scroll = useRef();
   const { updateDocument, response } = useFirestore("projects");
 
   // submit the form
@@ -25,14 +26,15 @@ const ProjectComments = ({ project }) => {
     await updateDocument(project.id, {
       comments: [...project.comments, commentToAdd],
     });
+    scroll.current.scrollIntoView({ behavior: "smooth" });
     if (!response.error) {
       setNewComment("");
     }
   };
   return (
     <div className="project-comments">
-      <h4>Project Comments</h4>
-      <ul>
+      {/* <h4>Project Comments</h4> */}
+      <ul className="project-chat">
         {project.comments.length > 0 &&
           project.comments.map((comment) => (
             <li key={comment.id}>
@@ -52,6 +54,7 @@ const ProjectComments = ({ project }) => {
               </div>
             </li>
           ))}
+          <div ref={scroll}></div>
       </ul>
       <form className="add-comment" onSubmit={handleSubmit}>
         <label>

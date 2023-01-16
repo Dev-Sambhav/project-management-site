@@ -6,9 +6,14 @@
   --text-color: #424242;
   --primary-color: #212121;
   --highlight-color: #d13267;
-  --bg-color: #795548;
+  --bg-color: #8EC5FC;
   --project-color: #EEEEEE;
+  --bg-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+  --bg-side: linear-gradient(to right, #141e30, #243b55);
+  --bg-btn: linear-gradient( 94.3deg,  rgba(26,33,64,1) 10.9%, rgba(81,84,115,1) 87.1% );
+
 }
+
 
 /* base styles */
 body {
@@ -16,6 +21,7 @@ body {
   margin: 0;
   font-size: 1.1em;
   background: var(--bg-color);
+  background-image: var(--bg-image);
 }
 ul, li, p, h1, h2, h3, h4 {
   margin: 0;
@@ -32,20 +38,20 @@ ul {
   display: inline-block;
   position: fixed;
   margin-top: -50px;
-  color: #E8EAF6;
+  color: #424242;
 }
 .btn {
-  background: #fff;
   padding: 10px 20px;
   border-radius: 4px;
-  color: var(--primary-color);
+  color: var(--bg-btn);
   cursor: pointer;
   font-size: 1em;
-  border: 1px solid var(--primary-color);
+  border: 1px solid var(--bg-btn);
+  font-weight: 550;
 }
 .btn:hover {
   color: #fff;
-  background-color: var(--primary-color);
+  background-image: var(--bg-btn);
 }
 
 /* forms */
@@ -56,12 +62,13 @@ label {
 label span {
   display: block;
   margin-bottom: 6px;
-  color: #E8EAF6;
+  color: #424242;
+  font-weight: 600;
 }
 input, textarea {
   padding: 8px 6px;
   font-size: 1em;
-  color: #777;
+  color: black;
   width: 100%;
   box-sizing: border-box;
   border: 1px solid #ddd;

@@ -14,8 +14,8 @@ const ProjectSummary = ({ project }) => {
   };
   return (
     <div>
+      <h2 className="page-title project-title">{project.name}</h2>
       <div className="project-summary">
-        <h2 className="page-title">{project.name}</h2>
         <p className="due-date">
           Project due by {project.dueDate.toDate().toDateString()}
         </p>

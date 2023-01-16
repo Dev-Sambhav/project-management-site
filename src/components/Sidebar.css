@@ -1,11 +1,11 @@
 .sidebar {
   width: 220px;
-  background: var(--primary-color);
+  background-image: var(--bg-side);
   min-height: 100vh;
   box-sizing: border-box;
   position: relative;
   color: #FAFAFA;
-  border-radius: 0px 7px 7px 0px;
+  /* border-radius: 0px 7px 7px 0px; */
 }
 .sidebar-content {
   position: fixed;
@@ -38,7 +38,7 @@
   filter: invert(100%);
 }
 .sidebar .links a.active {
-  color: #E8EAF6;
+  color: #424242;
   background: var(--bg-color);
   border-radius: 20px 0 0 20px;
 }

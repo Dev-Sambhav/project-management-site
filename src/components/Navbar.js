@@ -14,15 +14,15 @@ const Navbar = () => {
       <ul>
         <li className="logo">
           <img src={Logo} alt="project-logo" />
-          <span style={{color:"#E8EAF6"}}>Pro Manager</span>
+          <span style={{color:"#424242"}}>Pro Manager</span>
         </li>
         {!user && (
           <>
             <li>
-              <Link to="/login">Login</Link>
+              <Link className="btn" to="/login">Login</Link>
             </li>
             <li>
-              <Link to="/signup">Signup</Link>
+              <Link className="btn" to="/signup">Signup</Link>
             </li>
           </>
         )}

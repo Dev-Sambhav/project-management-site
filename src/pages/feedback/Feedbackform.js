@@ -18,6 +18,12 @@ const Feedback = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     SendFeedback(feedback);
+    const clrField = {
+      name: "",
+      email: "",
+      message: "",
+    };
+    setFeedback(clrField);
   };
 
   return (
