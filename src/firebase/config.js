@@ -18,9 +18,10 @@ firebase.initializeApp(firebaseConfig);
 // start the required firebase services
 const projectFirestore = firebase.firestore();
 const projectAuth = firebase.auth();
+const googleProvider = new firebase.auth.GoogleAuthProvider();
 const projectStorage = firebase.storage();
 
 // timestamp
 const timestamp = firebase.firestore.Timestamp;
 
-export { projectFirestore, projectAuth, projectStorage, timestamp };
+export { projectFirestore, projectAuth, projectStorage, timestamp, googleProvider };

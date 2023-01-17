@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useLogin } from "../../hooks/useLogin";
 import { useHistory } from "react-router-dom";
 import { useAuthContext } from "../../hooks/useAuthContext";
+import {useGoogle} from "../../hooks/useGoogle"
 
 // styles
 import "./Login.css";
@@ -10,6 +11,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { login, isLoading, error } = useLogin();
+  const {googleSignIn} = useGoogle();
   const history = useHistory();
   const { user } = useAuthContext();
 
@@ -21,6 +23,7 @@ const Login = () => {
 
   // handle google login
   const handleGoogleLogin = ()=>{
+    googleSignIn();
     console.log("Google Login Successful")
   }
 

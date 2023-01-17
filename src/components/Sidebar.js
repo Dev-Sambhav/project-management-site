@@ -10,12 +10,16 @@ import FeedbackIcon from "../assets/feedback-icon.svg";
 
 const Sidebar = () => {
   const { user } = useAuthContext();
+  // short the user name
+  const longName = user.displayName;
+  const names = longName.split(" ");
+  const shortName = names[0];
   return (
     <div className="sidebar">
       <div className="sidebar-content">
         <div className="user">
           <Avatar src={user.photoURL} />
-          <p>Hey {user.displayName}</p>
+          <p>Hey {shortName}</p>
         </div>
         <nav className="links">
           <ul>
