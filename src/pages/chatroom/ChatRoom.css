@@ -45,9 +45,10 @@
 }
 
 .message img {
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
+  margin-top: 12px;
 }
 
 .message p {
@@ -56,17 +57,33 @@
 }
 
 .message.sent {
-  background-color: #78e08f;
   color: #ffffff;
   float: right;
-  border-radius: 25px 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.message.sent .my-msg {
+  display: block;
+  padding: 11px;
+  border-radius: 7px;
+  background-color: #78e08f;
 }
 
 .message.received {
-  background-color: #a29bfe;
   color: #ffffff;
-  border-radius: 10px 25px;
   float: left;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.message.received .other-msg {
+  display: block;
+  padding: 10px;
+  border-radius: 7px;
+  background-color: #a29bfe;
 }
 
 .SendMessageBox {
@@ -80,7 +97,7 @@
   border-top: 1px solid lightgray;
   padding: 10px;
   padding-bottom: 30px;
-  background: #3A3845;
+  background: #3a3845;
   border-radius: 10px;
   margin-top: 15px;
 }

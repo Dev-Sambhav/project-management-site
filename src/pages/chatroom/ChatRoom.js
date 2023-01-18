@@ -37,8 +37,17 @@ const ChatRoom = () => {
                     uid === user.uid ? "sent" : "received"
                   }`}
                 >
-                  <img src={photoURL} alt="" />
-                  <p>{text}</p>
+                  {uid !== user.uid ? (
+                    <>
+                      <img src={photoURL} alt="" />
+                      <p className="other-msg">{text}</p> 
+                    </>
+                  ) : (
+                    <>
+                      <p className="my-msg">{text}</p>
+                      <img src={photoURL} alt="" />
+                    </>
+                  )}
                 </div>
               </div>
             ))
