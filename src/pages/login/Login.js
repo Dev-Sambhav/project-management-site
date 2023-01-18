@@ -3,6 +3,7 @@ import { useLogin } from "../../hooks/useLogin";
 import { useHistory } from "react-router-dom";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import {useGoogle} from "../../hooks/useGoogle"
+import {useFacebook} from "../../hooks/useFacebook"
 
 // styles
 import "./Login.css";
@@ -12,6 +13,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const { login, isLoading, error } = useLogin();
   const {googleSignIn} = useGoogle();
+  const {facebookSignIn} = useFacebook();
   const history = useHistory();
   const { user } = useAuthContext();
 
@@ -29,6 +31,7 @@ const Login = () => {
 
   // handle facebook login
   const handleFacebookLogin = ()=>{
+    facebookSignIn();
     console.log("Facebook Login Successful")
   }
 
