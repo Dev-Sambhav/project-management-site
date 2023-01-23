@@ -13,6 +13,7 @@ const SendMessage = ({ scroll }) => {
     e.preventDefault();
 
     await projectFirestore.collection("messages").add({
+      name : user.displayName,
       text: msg,
       photoURL: user.photoURL,
       uid: user.uid,

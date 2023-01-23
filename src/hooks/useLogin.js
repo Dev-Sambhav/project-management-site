@@ -19,7 +19,7 @@ export const useLogin = () => {
       if (!res) {
         throw new Error("User does not Exists");
       }
-
+      // console.log(res);
       // update the user online status
       await projectFirestore.collection("users").doc(res.user.uid).update({
         online: true,
@@ -33,8 +33,9 @@ export const useLogin = () => {
       }
     } catch (err) {
       if (!isCancelled) {
-        console.log(err.message);
-        setError(err.message);
+        if (err.code === "auth/user-not-found")
+          setError("User doesn't exists");
+        if(err.code === 'auth/wrong-password') setError("Password is Invalid")
         setIsLoading(false);
       }
     }

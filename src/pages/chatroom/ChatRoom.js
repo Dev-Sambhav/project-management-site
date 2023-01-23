@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { projectFirestore } from "../../firebase/config";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import SendMessage from "./SendMessage";
+import formatDistanceToNow from "date-fns/formatDistanceToNow";
 import "./ChatRoom.css";
 
 const ChatRoom = () => {
@@ -29,7 +30,7 @@ const ChatRoom = () => {
           {messages.length === 0 ? (
             <p className="no-chat">Chat not Started Yet!!!</p>
           ) : (
-            messages.map(({ id, text, photoURL, uid }) => (
+            messages.map(({ id, text, photoURL, uid, createdAt, name }) => (
               <div>
                 <div
                   key={id}
@@ -39,13 +40,37 @@ const ChatRoom = () => {
                 >
                   {uid !== user.uid ? (
                     <>
-                      <img src={photoURL} alt="" />
-                      <p className="other-msg">{text}</p> 
+                    <div className="logo-name">
+                        <img src={photoURL} alt="" />
+                        <p className="logo-txt">{name}</p>
+                      </div>
+                      <p className="other-msg">
+                        {text}
+                        <div className="my-cmt">
+                          <p>
+                            {formatDistanceToNow(createdAt.toDate(), {
+                              addSuffix: true,
+                            })}
+                          </p>
+                        </div>
+                      </p>
                     </>
                   ) : (
                     <>
-                      <p className="my-msg">{text}</p>
-                      <img src={photoURL} alt="" />
+                      <p className="my-msg">
+                        {text}
+                        <div className="my-cmt">
+                          <p>
+                            {formatDistanceToNow(createdAt.toDate(), {
+                              addSuffix: true,
+                            })}
+                          </p>
+                        </div>
+                      </p>
+                      <div className="logo-name">
+                        <img src={photoURL} alt="" />
+                        <p className="logo-txt">{name}</p>
+                      </div>
                     </>
                   )}
                 </div>
