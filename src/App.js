@@ -1,5 +1,6 @@
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { useAuthContext } from "./hooks/useAuthContext";
+
 // styles
 import "./App.css";
 
@@ -14,19 +15,36 @@ import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
 import OnlineUsers from "./components/OnlineUsers";
 import Feedbackform from "./pages/feedback/Feedbackform";
+import AdminDash from "./pages/Admin/Dashboard/AdminDash";
+import AdminSidebar from "./pages/Admin/Sidebar/AdminSidebar";
+import User from "./pages/Admin/User/User";
+
 function App() {
   const { user, isAuthReady } = useAuthContext();
-   
+  const admin_user = true;
+
   return (
     <div className="App">
       {isAuthReady && (
         <BrowserRouter>
-          {user && <Sidebar />}
+          {admin_user ? user && <AdminSidebar /> : user && <Sidebar />}
           <div className="container">
             <Navbar />
             <Switch>
               <Route exact path="/">
                 {user && <Dashboard />}
+                {!user && <Redirect to="/login" />}
+              </Route>
+              <Route exact path="/admin">
+                {user && <AdminDash />}
+                {!user && <Redirect to="/login" />}
+              </Route>
+              <Route exact path="/projects">
+                {user && <AdminDash />}
+                {!user && <Redirect to="/login" />}
+              </Route>
+              <Route exact path="/users">
+                {user && <User />}
                 {!user && <Redirect to="/login" />}
               </Route>
               <Route path="/login">
@@ -55,7 +73,7 @@ function App() {
               </Route>
             </Switch>
           </div>
-          {user && <OnlineUsers />}
+          {!admin_user && (user && <OnlineUsers />)}
         </BrowserRouter>
       )}
     </div>
