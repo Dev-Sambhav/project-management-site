@@ -3,15 +3,16 @@ import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
+import Avatar from "../../../components/Avatar"
 import "./User.css";
 import { useCollection } from "../../../hooks/useCollection";
 import { Button } from "@mui/material";
-// import { admin } from "../../../firebase/config";
+import { projectFirestore, admin } from "../../../firebase/config";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
   ...theme.typography.body2,
-  padding: theme.spacing(1),
+  padding: theme.spacing(2),
   textAlign: "center",
   color: theme.palette.text.secondary,
 }));
@@ -20,15 +21,24 @@ export default function User() {
   const { documents: users, error, isLoading } = useCollection
   ("users");
   const handleDelete = async (id) => {
-    try {
-      const users = await admin.auth().listUsers();
-      users.users.forEach(async (user) => {
-          // await admin.auth().deleteUser(user.uid);
-          console.log(user);
-      });
-  } catch (error) {
-      console.error(error);
-  }
+    // delete user
+    admin.auth().deleteUser(id)
+    .then(() => {
+      console.log("User deleted successfully");
+    })
+    .catch((error) => {
+      console.error("Error deleting user: ", error);
+    });
+
+    // delete user document
+    projectFirestore.collection("users").doc(id).delete()
+    .then(() => {
+      console.log("User document deleted successfully");
+    })
+    .catch((error) => {
+      console.error("Error deleting user document: ", error);
+    });
+    
   };
   
   return (
@@ -45,7 +55,7 @@ export default function User() {
             {users.map((user) => (
               <Grid item>
                 <Item className="card-box">
-                  <img
+                  <Avatar
                     src={user.photoURL}
                     className="card-img"
                     alt="user-img"

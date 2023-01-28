@@ -1,9 +1,9 @@
+import serviceAccount from './serviceAccoutKey.json';
 import firebase from "firebase/app";
 import "firebase/firestore";
 import "firebase/auth";
 import "firebase/storage";
-import { initializeApp } from "firebase-admin/app";
-import serviceAccount from "./serviceAccountKey.json";
+import * as admin from "firebase-admin";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBLiiJ3JSvVWbuZpNfOdgyO4ddhW2S0cUU",
@@ -14,11 +14,9 @@ const firebaseConfig = {
   appId: "1:713795915786:web:49e6e84c2930882ad94ff3",
 };
 
-const admin = initializeApp();
-
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  databaseURL: firebaseConfig.databaseURL
+  databaseURL: "https://project-management-site-524ae.firebaseio.com"
 });
 
 // initialize the firebase app with firebase config
@@ -34,4 +32,12 @@ const projectStorage = firebase.storage();
 // timestamp
 const timestamp = firebase.firestore.Timestamp;
 
-export { projectFirestore, projectAuth, projectStorage, timestamp, googleProvider, facebookProvider, admin};
+export {
+  projectFirestore,
+  projectAuth,
+  projectStorage,
+  timestamp,
+  googleProvider,
+  facebookProvider,
+  admin
+};

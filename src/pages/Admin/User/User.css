@@ -1,13 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@600&display=swap');
 
 .card-box {
-  height: 40vh !important;
+  min-height: 20vh !important;
   min-width: 18em;
 }
 
 .card-img {
-  height: 90px;
-  width: 90px;
+  height: 90px !important;
+  width: 90px !important;
+  text-align: center;
   margin-bottom: 1em;
 }
 
