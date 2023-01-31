@@ -5,12 +5,14 @@ import {
   projectFirestore,
 } from "../firebase/config";
 import { useAuthContext } from "./useAuthContext";
+import useShortName from "./useShortName";
 
 export const useFacebook = () => {
   const [isCancelled, setIsCancelled] = useState(false);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const { dispatch } = useAuthContext();
+  const {shortTheName} = useShortName();
   const facebookSignIn = async () => {
     setError(null);
     setIsLoading(true);
@@ -21,16 +23,11 @@ export const useFacebook = () => {
         throw new Error("User does not Exists");
       }
 
-      // short the user name
-      const longName = res.user.displayName;
-      const names = longName.split(' ');
-      const shortName = names[0];
-
 
       // create a user document
       await projectFirestore.collection("users").doc(res.user.uid).set({
         online: true,
-        displayName:shortName,
+        displayName:shortTheName(res.user.displayName),
         photoURL:res.user.photoURL,
       });
 
