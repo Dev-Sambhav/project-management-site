@@ -4,16 +4,10 @@ import { useAuthContext } from "./hooks/useAuthContext";
 import "./App.css";
 
 // components and pages
-import Login from "./pages/login/Login";
-import Signup from "./pages/signup/Signup";
-import Create from "./pages/create/Create";
-import Dashboard from "./pages/dashboard/Dashboard";
-import Project from "./pages/project/Project";
-import ChatRoom from "./pages/chatroom/ChatRoom";
-import Navbar from "./components/Navbar";
-import Sidebar from "./components/Sidebar";
-import OnlineUsers from "./components/OnlineUsers";
-import Feedbackform from "./pages/feedback/Feedbackform";
+import {Navbar, Sidebar, OnlineUsers} from "./components";
+import {Login, Signup, Create, Dashboard, Project, ChatRoom, Feedbackform} from "./pages"
+
+
 function App() {
   const { user, isAuthReady } = useAuthContext();
    

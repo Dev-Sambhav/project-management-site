@@ -4,7 +4,7 @@ import { useCollection } from "../hooks/useCollection";
 import "./OnlineUsers.css";
 
 // component
-import Avatar from "./Avatar";
+import {Avatar} from "./"
 
 const OnlineUsers = () => {
   const { documents: users, error, isLoading } = useCollection("users");

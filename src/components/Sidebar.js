@@ -4,7 +4,7 @@ import { useAuthContext } from "../hooks/useAuthContext";
 import "./Sidebar.css";
 import DashboardIcon from "../assets/dashboard_icon.svg";
 import AddIcon from "../assets/add_icon.svg";
-import Avatar from "./Avatar";
+import {Avatar} from "./"
 import ChatIcon from "../assets/chat-icon.svg";
 import FeedbackIcon from "../assets/feedback-icon.svg";
 
